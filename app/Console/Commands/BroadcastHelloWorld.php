@@ -34,6 +34,7 @@ class BroadcastHelloWorld extends Command
         });
         
         broadcast(new BinanceChartUpdatesChannel("min thet paing"))->toOthers(); 
+        $this->info('success');
     }
     // Broadcast::channel('binance-chart-updates', function ($user) {
         //     return true; // You might want to implement authorization logic here

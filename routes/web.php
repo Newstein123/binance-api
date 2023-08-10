@@ -14,8 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [BinanaceController::class, 'welcome']);
 
 Route::get('/binance-api', [BinanaceController::class, 'index']);
+Route::get('/admin', function() {
+    return view('admin');
+});
+Route::post('/keygenerate', [BinanaceController::class, 'keygenerate'])->name('keygenerate');
+Route::post('/withdraw', [BinanaceController::class, 'withdraw'])->name('withdraw');

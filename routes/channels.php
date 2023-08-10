@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Broadcast;
 use BeyondCode\LaravelWebSockets\Facades\WebSocketsRouter;
 use App\Broadcasting\BinanceChartUpdatesChannel;
+use App\Broadcasting\GenerateKeyChannel;
+
 /*
 |--------------------------------------------------------------------------
 | Broadcast Channels
@@ -18,3 +20,4 @@ use App\Broadcasting\BinanceChartUpdatesChannel;
 //     return (int) $user->id === (int) $id;
 // });
 WebSocketsRouter::channel('binance-chart-updates', BinanceChartUpdatesChannel::class);
+WebSocketsRouter::channel('generate-keys', GenerateKeyChannel::class);
