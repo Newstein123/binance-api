@@ -22,3 +22,6 @@ Route::get('/admin', function() {
 });
 Route::post('/keygenerate', [BinanaceController::class, 'keygenerate'])->name('keygenerate');
 Route::post('/withdraw', [BinanaceController::class, 'withdraw'])->name('withdraw');
+Route::get('/api-test', function() {
+    return view('api');
+});

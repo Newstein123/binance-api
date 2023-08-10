@@ -11,7 +11,12 @@
 <body>
 <p id="test"> Price Will Change When give command  </p>
 <form onsubmit="withdrawMoney(event, '{{route('withdraw')}}')">
-    <p> To Generate Key Please Click Button </p>
+    <p> BTC/USDT : <span id="btc"> - </span> </p>
+    <p> ETH/USDT : <span id="eth"> - </span> </p>
+    <p> BNB/USDT : <span id="bnb"> - </span> </p>
+    <p> SHIB/USDT : <span id="shib"> - </span> </p>
+    <p> SOL/USDT : <span id="sol"> - </span> </p>
+    <p> AKRO/USDT : <span id="akro"> - </span> </p>
     <input type="text" id="key" placeholder="generated_key" disabled>
     <button type="button" onclick="fetchKey(event, '{{route('keygenerate')}}')"> Generate Key </button> <hr>
     <input type="text" id="amount" placeholder="Enter Your Amount">
@@ -30,8 +35,12 @@
 
     // Subscribe to the binance-chart-updates channel
     const channel = pusher.subscribe('binance-chart-updates');
-    channel.bind('binance-chart-update', function(data) {
-       $('#test').html(data.chart.price);
+    channel.bind('binance-chart-update', function(res) {
+        const data = res.data;
+        for(const coin in data) {
+            const price = data[coin];
+           $(`#${coin}`).text(`${price}`)
+        }
     });
     const channel2 = pusher.subscribe('generate-keys');
     channel2.bind('generate-key', function(data) {

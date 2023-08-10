@@ -31,8 +31,7 @@ class BinanceChartUpdatesChannel implements ShouldBroadcast
     public function broadcastWith()
     {   
         return [
-            'symbol' => 'BNBBTC',
-            'chart' => $this->data,
+            "data" => $this->data,
         ];
     }
 }
